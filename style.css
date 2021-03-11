@@ -1,0 +1,29 @@
+body{
+    border: 1.8cm solid; 
+    border-color: rgb(2, 3, 72);
+    margin: 0px;
+    border-bottom: 0cm;
+    border-left: 0cm;
+    border-right: 0cm;
+}
+.upperlogo img{
+    border-bottom-right-radius: 15px;
+    height: 75px;
+    border: 13px solid;
+    border-color: rgb(2, 3, 72) ;
+    border-left: 0;
+    border-bottom: 5px;
+    border-top: 5px;
+    margin: 0;
+
+}
+.new_ppl{
+    justify-content: center;
+    width: 50em;
+    border-top: 5em;
+    margin-bottom: 1em;
+}
+.form-control{
+    display: block;
+    width: 100%;
+}
