@@ -12,7 +12,7 @@
                 <img src="logo_vehice_1.jpg">
             </p>
         </div>
-        <form method="get">
+        <form method="get" class="need validation">
             <div><p>''</p></div>
             <div class="row"></div>
                 <div class="new_ppl d-flex container">
@@ -22,7 +22,7 @@
                             <div class="row g-3">
                                 <div class="col">
                                     <div class="form-floating mb-1">
-                                        <input type="text" class="form-control" id="name_ppl_new" placeholder="nombre" required>
+                                        <input type="text" class="form-control has error" id="name_ppl_new" placeholder="nombre" required>
                                         <label for="name_ppl_new">Nombre</label>
                                         <div class="invalid-feedback">
                                             Ponga un nombre
@@ -96,7 +96,7 @@
                             </select>
                         </p>
                         <p>
-                            <button type="submit" class="btn btn-info">Entrar</button>
+                            <button type="submit" class="btn btn-primary">Entrar</button>
                         </p>
                     </fieldset>
                 </div>
