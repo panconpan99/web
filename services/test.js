@@ -19,36 +19,36 @@ buttonAdd.onclick = function() {
         ige = row.insertCell(); 
         ige.appendChild(image);
     }
-    if (services.value == "service1") {
+    if (services.value == "General_Score") {
         description = row.insertCell();
-        description.innerHTML = "Description for Service 1";
+        description.innerHTML = "Texto para general Score";
         value = row.insertCell();
-        value.innerHTML = "2";
+        value.innerHTML = "0,8";
         var image = document.createElement('img');
-        image.src = 'test.jpg';
-        image.width = "200";
+        image.src = './photos/general.jpg';
+        image.width = "100";
         ige = row.insertCell(); 
         ige.appendChild(image);
     }
-    if (services.value == "service2") {
+    if (services.value == "Score_Gill") {
         description = row.insertCell();
-        description.innerHTML = "Description for Service 2";
+        description.innerHTML = "Texto ejemplo para Score Gill";
         value = row.insertCell();
-        value.innerHTML = "0.01";
+        value.innerHTML = "0,5";
         var image = document.createElement('img');
-        image.src = 'test.jpg';
-        image.width = "200";
+        image.src = './photos/gill.jpg';
+        image.width = "100";
         ige = row.insertCell(); 
         ige.appendChild(image);
     }
-    if (services.value == "service3") {
+    if (services.value == "Detección_de_FANs") {
         description = row.insertCell();
-        description.innerHTML = "Description for Service 3";
+        description.innerHTML = "Texto para la deteccion de fans";
         value = row.insertCell();
-        value.innerHTML = "1000";
+        value.innerHTML = "0,42";
         var image = document.createElement('img');
-        image.src = 'test.jpg';
-        image.width = "200";
+        image.src = './photos/fans.jpg';
+        image.width = "100";
         ige = row.insertCell(); 
         ige.appendChild(image);
     }
