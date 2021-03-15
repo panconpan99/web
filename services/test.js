@@ -8,17 +8,6 @@ buttonAdd.onclick = function() {
     var row = tbodyEl.insertRow(); 
     var cell = row.insertCell(); 
     cell.innerHTML = add;
-    if (services.value == "service0") {
-        description = row.insertCell();
-        description.innerHTML = "Description for Service 0";
-        value = row.insertCell();
-        value.innerHTML = "30";
-        var image = document.createElement('img');
-        image.src = 'test.jpg';
-        image.width = "100";
-        ige = row.insertCell(); 
-        ige.appendChild(image);
-    }
     if (services.value == "General_Score") {
         description = row.insertCell();
         description.innerHTML = "Texto para general Score";
@@ -48,6 +37,28 @@ buttonAdd.onclick = function() {
         value.innerHTML = "0,42";
         var image = document.createElement('img');
         image.src = './photos/fans.jpg';
+        image.width = "100";
+        ige = row.insertCell(); 
+        ige.appendChild(image);
+    }
+    if (services.value == "H&E_Órgano") {
+        description = row.insertCell();
+        description.innerHTML = "Texto ejemplo para h&e organo";
+        value = row.insertCell();
+        value.innerHTML = "0,6";
+        var image = document.createElement('img');
+        image.src = './photos/he_organo.jpg';
+        image.width = "100";
+        ige = row.insertCell(); 
+        ige.appendChild(image);
+    }
+    if (services.value == "H&E_Alevin") {
+        description = row.insertCell();
+        description.innerHTML = "Texto h&E alevin";
+        value = row.insertCell();
+        value.innerHTML = "1,1";
+        var image = document.createElement('img');
+        image.src = './photos/he_alevin.jpg';
         image.width = "100";
         ige = row.insertCell(); 
         ige.appendChild(image);
