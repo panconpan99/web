@@ -8,6 +8,7 @@ buttonAdd.onclick = function() {
     var row = tbodyEl.insertRow(); 
     var cell = row.insertCell(); 
     cell.innerHTML = add;
+
     if (services.value == "General_Score") {
         description = row.insertCell();
         description.innerHTML = "Texto para general Score";
@@ -41,7 +42,7 @@ buttonAdd.onclick = function() {
         ige = row.insertCell(); 
         ige.appendChild(image);
     }
-    if (services.value == "H&E_Órgano") {
+    if (services.value == "H&E_organo") {
         description = row.insertCell();
         description.innerHTML = "Texto ejemplo para h&e organo";
         value = row.insertCell();
