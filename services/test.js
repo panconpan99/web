@@ -16,6 +16,7 @@ buttonAdd.onclick = function() {
         value.innerHTML = "0,8";
         var input = document.createElement('input');
         input.setAttribute("type", "number");
+        input.setAttribute("value", "1");
         input.width = '50';
         inu = row.insertCell();
         inu.appendChild(input);
@@ -32,6 +33,7 @@ buttonAdd.onclick = function() {
         value.innerHTML = "0,5";
         var input = document.createElement('input');
         input.setAttribute("type", "number");
+        input.setAttribute("value", "1");
         input.width = '50';
         inu = row.insertCell();
         inu.appendChild(input);
@@ -48,6 +50,7 @@ buttonAdd.onclick = function() {
         value.innerHTML = "0,42";
         var input = document.createElement('input');
         input.setAttribute("type", "number");
+        input.setAttribute("value", "1");
         input.width = '50';
         inu = row.insertCell();
         inu.appendChild(input);
@@ -64,6 +67,7 @@ buttonAdd.onclick = function() {
         value.innerHTML = "0,6";
         var input = document.createElement('input');
         input.setAttribute("type", "number");
+        input.setAttribute("value", "1");
         input.width = '50';
         inu = row.insertCell();
         inu.appendChild(input);
@@ -80,6 +84,7 @@ buttonAdd.onclick = function() {
         value.innerHTML = "1,1";
         var input = document.createElement('input');
         input.setAttribute("type", "number");
+        input.setAttribute("value", "1");
         input.width = '50';
         inu = row.insertCell();
         inu.appendChild(input);
