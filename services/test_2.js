@@ -16,7 +16,7 @@ buttonAdd.onclick = function() {
         value.innerHTML =  "0.8" ;
         input.width = '50';
         var image = document.createElement('img');
-        image.src = './photos/general.jpg';
+        image.src = "./photos/general.jpg";
         image.width = "100";
         ige = row.insertCell(); 
         ige.appendChild(image);

@@ -9,7 +9,7 @@ buttonAdd.onclick = function() {
     var cell = row.insertCell(); 
     cell.innerHTML = add;
 
-    if (services.value == "General_Score") {
+    if (services.value == "General Score") {
         description = row.insertCell();
         description.innerHTML = "Texto para general Score";
         var input = document.createElement('input');
@@ -27,7 +27,7 @@ buttonAdd.onclick = function() {
         ige = row.insertCell(); 
         ige.appendChild(image);
     }
-    if (services.value == "Score_Gill") {
+    if (services.value == "Score Gill") {
         description = row.insertCell();
         description.innerHTML = "Texto ejemplo para Score Gill";
         var input = document.createElement('input');
@@ -45,7 +45,7 @@ buttonAdd.onclick = function() {
         ige = row.insertCell(); 
         ige.appendChild(image);
     }
-    if (services.value == "Detección_de_FANs") {
+    if (services.value == "Detección de FANs") {
         description = row.insertCell();
         description.innerHTML = "Texto para la deteccion de fans";
         var input = document.createElement('input');
@@ -63,7 +63,7 @@ buttonAdd.onclick = function() {
         ige = row.insertCell(); 
         ige.appendChild(image);
     }
-    if (services.value == "H&E_organo") {
+    if (services.value == "H&E organo") {
         description = row.insertCell();
         description.innerHTML = "Texto ejemplo para h&e organo";
         var input = document.createElement('input');
@@ -81,7 +81,7 @@ buttonAdd.onclick = function() {
         ige = row.insertCell(); 
         ige.appendChild(image);
     }
-    if (services.value == "H&E_Alevin") {
+    if (services.value == "H&E Alevin") {
         description = row.insertCell();
         description.innerHTML = "Texto h&E alevin";
         var input = document.createElement('input');
