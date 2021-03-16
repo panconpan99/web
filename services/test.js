@@ -12,14 +12,15 @@ buttonAdd.onclick = function() {
     if (services.value == "General_Score") {
         description = row.insertCell();
         description.innerHTML = "Texto para general Score";
-        value = row.insertCell();
-        value.innerHTML = "0,8";
         var input = document.createElement('input');
         input.setAttribute("type", "number");
         input.setAttribute("value", "1");
-        input.width = '50';
+        input.min=1;
         inu = row.insertCell();
         inu.appendChild(input);
+        value = row.insertCell();
+        value.innerHTML = input.valueAsNumber * 0.8 ;
+        input.width = '50';
         var image = document.createElement('img');
         image.src = './photos/general.jpg';
         image.width = "100";
@@ -29,14 +30,15 @@ buttonAdd.onclick = function() {
     if (services.value == "Score_Gill") {
         description = row.insertCell();
         description.innerHTML = "Texto ejemplo para Score Gill";
-        value = row.insertCell();
-        value.innerHTML = "0,5";
         var input = document.createElement('input');
         input.setAttribute("type", "number");
         input.setAttribute("value", "1");
-        input.width = '50';
+        input.min=1;
         inu = row.insertCell();
         inu.appendChild(input);
+        value = row.insertCell();
+        value.innerHTML = input.valueAsNumber * 0.5;
+        input.width = '50';
         var image = document.createElement('img');
         image.src = './photos/gill.jpg';
         image.width = "100";
@@ -46,14 +48,15 @@ buttonAdd.onclick = function() {
     if (services.value == "Detección_de_FANs") {
         description = row.insertCell();
         description.innerHTML = "Texto para la deteccion de fans";
-        value = row.insertCell();
-        value.innerHTML = "0,42";
         var input = document.createElement('input');
         input.setAttribute("type", "number");
         input.setAttribute("value", "1");
-        input.width = '50';
+        input.min=1;
         inu = row.insertCell();
         inu.appendChild(input);
+        value = row.insertCell();
+        value.innerHTML = input.valueAsNumber * 0.42;
+        input.width = '50';
         var image = document.createElement('img');
         image.src = './photos/fans.jpg';
         image.width = "100";
@@ -63,14 +66,15 @@ buttonAdd.onclick = function() {
     if (services.value == "H&E_organo") {
         description = row.insertCell();
         description.innerHTML = "Texto ejemplo para h&e organo";
-        value = row.insertCell();
-        value.innerHTML = "0,6";
         var input = document.createElement('input');
         input.setAttribute("type", "number");
         input.setAttribute("value", "1");
-        input.width = '50';
+        input.min=1;
         inu = row.insertCell();
         inu.appendChild(input);
+        value = row.insertCell();
+        value.innerHTML = input.valueAsNumber * 0.6;
+        input.width = '50';
         var image = document.createElement('img');
         image.src = './photos/he_organo.jpg';
         image.width = "100";
@@ -80,14 +84,15 @@ buttonAdd.onclick = function() {
     if (services.value == "H&E_Alevin") {
         description = row.insertCell();
         description.innerHTML = "Texto h&E alevin";
-        value = row.insertCell();
-        value.innerHTML = "1,1";
         var input = document.createElement('input');
         input.setAttribute("type", "number");
         input.setAttribute("value", "1");
-        input.width = '50';
+        input.min=1;
         inu = row.insertCell();
         inu.appendChild(input);
+        value = row.insertCell();
+        value.innerHTML = input.valueAsNumber * 1.1;
+        input.width = '50';
         var image = document.createElement('img');
         image.src = './photos/he_alevin.jpg';
         image.width = "100";
