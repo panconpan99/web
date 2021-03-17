@@ -1,0 +1,59 @@
+body{
+    border: 1.8cm solid; 
+    border-color: rgb(2, 3, 72);
+    margin: 0px;
+    border-bottom: 0cm;
+    border-left: 0cm;
+    border-right: 0cm;
+}
+
+ 
+.upperlogo img{
+    border-bottom-right-radius: 15px;
+    height: 75px;
+    border: 13px solid;
+    border-color: rgb(2, 3, 72) ;
+    border-left: 0;
+    border-bottom: 5px;
+    border-top: 0;
+    margin: 0;
+
+}
+.titulo h1{
+    left: 40px
+}
+
+.content_new legend{
+    font-style: italic;
+    
+}
+.content_new{
+    position: fixed;
+    display: flex;
+    top: 100px;
+}
+
+.content_new p{
+    padding-left: 10px;
+}
+.content_repr legend{
+    font-style: italic;
+}
+
+.content_repr{
+    position: fixed;
+    display: flex;
+}
+
+.content_place legend{
+    font-style: italic;
+}
+.content_place{
+    display: flex;
+}
+
+body{
+    overflow-y: scroll;
+    max-height: max-content;
+}
+

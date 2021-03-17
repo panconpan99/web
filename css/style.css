@@ -1,9 +1,8 @@
 
 .new_ppl{
     justify-content: center;
-    width: 50em;
-    border-top: 5em;
     margin-bottom: 1em;
+    width: 100%;
 }
 .form-control{
     display: block;
