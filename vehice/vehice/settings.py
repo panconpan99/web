@@ -11,16 +11,19 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+import environ
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'caua7+g5-$%mtrzi6x#ly6^#af5$&5hw8oj(hh1o7q_^u^y@mx'
+env = environ.Env()
+environ.Env.read_env()
+
+SECRET_KEY = env("secret_key")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
