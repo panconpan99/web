@@ -22,7 +22,7 @@ buttonAdd.onclick = function() {
         value.innerHTML = input.valueAsNumber * 0.8;
         input.width = '50';
         var image = document.createElement('img');
-        image.src = '../photos/general.jpg';
+        image.src ='{% static "photos/general.jpg" %}';
         image.width = "100";
         ige = row.insertCell(); 
         ige.appendChild(image);
