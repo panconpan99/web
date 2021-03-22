@@ -1,0 +1,142 @@
+<html>
+    <head>
+        <meta charset="UTF-8" content="width=device-width, initial-scale=1">
+        <title>mold</title>
+        <link rel="stylesheet" href="molde.css">
+    </head>
+    <body>
+        <!--nota : solo empresas nacionales-->
+        <div class= "upperlogo" style ="position: fixed; top: 0px">
+            <p>
+                <img src="logo_vehice_1.jpg" > 
+            </p>
+        </div>
+        <form method="get" >
+        <div class="content_new">
+            <fieldset>
+            <legend> <strong> Datos basicos de la empresa:</strong> </legend>
+            <p>
+                <!--nombre-->
+                <label for="name_ep_new">Nombre empresa: </label>
+                <input type="text" name="name_ep" id="name_ep_new" placeholder="Nombre" required>
+            </p>
+            <p>
+                <!--rut-->
+                <label for="rut_ep_new">Rut empresa: </label>
+                <input type="text" name="rut_ep" id="rut_ep_new" placeholder="Rut" required>
+            </p>
+            <p>
+                <!--direccion-->
+                <label for="dir_ep_new">Dirección empresa:  </label>
+                <input type="text" name="dir_ep" id="dir_ep_new" placeholder="Dirección" required>
+            </p>
+            <p>
+                <!--región-->
+                <label for="region_ep_new"> Región: </label>
+                <select name="region" id="region_ep_new">
+                    <option value="XV Región de Arica y Parinacota">XV Región de Arica y Parinacota</option>
+                    <option value="I Región de Tarapacá">I Región de Tarapacá</option>
+                    <option value="II Región de Antofagasta">II Región de Antofagasta</option>
+                    <option value="III Región de Atacama">III Región de Atacama</option>
+                    <option value="IV Región de Coquimbo">IV Región de Coquimbo</option>
+                    <option value="V Región de Valparaíso">V Región de Valparaíso</option>
+                    <option value="Región Metropolitana de Santiago">Región Metropolitana de Santiago</option>
+                    <option value="VI Región del Libertador General Bernardo O'Higgins">VI Región del Libertador General Bernardo O'Higgins</option>
+                    <option value="VII Región del Maule">VII Región del Maule</option>
+                    <option value="XVI Región del Ñuble">XVI Región del Ñuble</option>
+                    <option value="VIII Región del Biobío">VIII Región del Biobío</option>
+                    <option value="IX Región de La Araucania">IX Región de La Araucania</option>
+                    <option value="XIV Región de Los Ríos">XIV Región de Los Ríos</option>
+                    <option value="X Región de Los Lagos">X Región de Los Lagos</option>
+                    <option value="XI Región de Aysén del General Carlos Ibáñez del Campo">XI Región de Aysén del General Carlos Ibáñez del Campo</option>
+                    <option value="XII Región de Magallanes y la Antártica Chilena">XII Región de Magallanes y la Antártica Chilena</option>
+                </select>
+                <input type="hidden" id="region_ep_new" name="region">
+            </p>
+            <p>
+                <!--telefono-->
+                <label for="tel_ep_new"> Telefono Empresa: </label>
+                <input type="tel" name="tel_ep" id="tel_ep_new" placeholder="Telefono" required>
+            </p>
+        </fieldset>
+        </div>
+
+
+        <div class="content_repr" style="position: fixed; top: 350px">
+            <fieldset>
+                <legend> <strong>Datos Representante</strong> </legend>
+
+            <p>
+                <!--nombre y rut-->
+                <label for="name_repr_new">Nombre:</label>
+                <input type="text" name="name_repr" id="name_repr_new" required>
+                <label for="ape_repr_new">Apellido:  </label>
+                <input type="text" name="ape_repr" id="ape_repr_new" required>
+            </p>
+            <p>
+                <!--rut representante-->
+                <label for="rut_repr_new">Rut: </label>
+                <input type="text" name="rut_repr" id="rut_repr_new" required>
+            </p>
+            <p>
+                <!--Telefono-->
+                <label for="tel_repr_new">Telefono: </label>
+                <input type="text" name="tel_repr_new" id="tel_repr_new" required>
+            </p>
+            <p>
+                <!--correo-->
+                <label for="cor_repr_new">Correo:  </label>
+                <input type="email" name="cor_repr" id="cor_repr_new" placeholder="example@example.cl" required>
+                
+            </p>
+            </fieldset>
+        </div>
+        <div class="content_place" style="position: fixed; top : 575px">
+            <fieldset>
+                <legend> <strong>Datos Centro</strong></legend>
+            <p>
+                <!--nombre centro-->
+                <label for="name_pl_new">Nombre Centro:</label>
+                <input type="text" name="name_pl" id="name_pl_new">
+
+            </p>
+            <p>
+                <!--direccion-->
+                <label for="dir_pl_new">Dirección Centro:</label>
+                <input type="text" name="dir_pl" id="dir_pl_new">
+            </p>
+            <p>
+                <!--region-->
+                <label for="region_pl_new">Región:</label>
+                <input list="region" name="region_pl" id="region_pl_new">
+                <datalist id="region">
+                    <option value="XV Región de Arica y Parinacota"></option>
+                    <option value="I Región de Tarapacá"></option>
+                    <option value="II Región de Antofagasta"></option>
+                    <option value="III Región de Atacama"></option>
+                    <option value="IV Región de Coquimbo"></option>
+                    <option value="V Región de Valparaíso"></option>
+                    <option value="Región Metropolitana de Santiago"></option>
+                    <option value="VI Región del Libertador General Bernardo O'Higgins"></option>
+                    <option value="VII Región del Maule"></option>
+                    <option value="XVI Región del Ñuble"></option>
+                    <option value="VIII Región del Biobío"></option>
+                    <option value="IX Región de La Araucania"></option>
+                    <option value="XIV Región de Los Ríos"></option>
+                    <option value="X Región de Los Lagos"></option>
+                    <option value="XI Región de Aysén del General Carlos Ibáñez del Campo"></option>
+                    <option value="XII Región de Magallanes y la Antártica Chilena"></option>
+                </datalist>
+
+            </p>
+            <p>
+                <!--telefono-->
+                <label for="tel_pl_new"> Telefono Centro: </label>
+                <input type="tel" name="tel_pl" id="tel_pl_new" placeholder="Telefono" >
+            </p>
+            </fieldset>
+        </div>
+
+        </form>
+    </body>
+</html>
