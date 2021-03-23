@@ -4,7 +4,7 @@ import datetime
 
 # Create your models here.
 
-class represante(models.Model):
+class representante(models.Model):
     repr_name=models.CharField(max_length=30,unique=True)
     repr_apellido=models.CharField(max_length=30,unique=True)
     repr_correo=models.EmailField(max_length=50,unique=True)
@@ -14,7 +14,7 @@ class represante(models.Model):
     id_repr=models.IntegerField(primary_key=True)
 
     def __str__(self):
-        return "%s %s" % (self.repr_name, self.repr_apellido)
+        return self.repr_name
 
 class cotizacion(models.Model):
     cantidad=models.IntegerField()
@@ -29,7 +29,7 @@ class servicio(models.Model):
 
 
 class repr_cot(models.Model):
-    repr_id=models.ForeignKey(represante,on_delete=models.CASCADE)
+    repr_id=models.ForeignKey(representante,on_delete=models.CASCADE)
     cot_id=models.ForeignKey(cotizacion,on_delete=models.CASCADE)
 
 class serv_cot(models.Model):

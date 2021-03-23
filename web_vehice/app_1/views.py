@@ -8,3 +8,9 @@ def index(request):
 
 def index_1(request):
     return render(request,'app_1/index_1.html')
+
+def index_2(request):
+    return render(request,'app_1/index_2.html')
+
+def result(request):
+    return render(request, 'app_1/formulario_results.html')
