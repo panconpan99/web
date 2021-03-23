@@ -5,26 +5,23 @@ import datetime
 # Create your models here.
 
 class representante(models.Model):
-    repr_name=models.CharField(max_length=30,unique=True)
-    repr_apellido=models.CharField(max_length=30,unique=True)
-    repr_correo=models.EmailField(max_length=50,unique=True)
+    nombre=models.CharField(max_length=30,unique=True)
+    apellido=models.CharField(max_length=30,unique=True)
+    corre=models.EmailField(max_length=50,unique=True)
     telefono=models.CharField(max_length=20)
-    repr_centro=models.CharField(max_length=40)
-    repr_dir_centro=models.CharField(max_length=50)
-    id_repr=models.IntegerField(primary_key=True)
+    centro=models.CharField(max_length=40)
+    dir_centro=models.CharField(max_length=50)
 
     def __str__(self):
-        return self.repr_name
+        return self.nombre
 
 class cotizacion(models.Model):
     cantidad=models.IntegerField()
     fecha=models.DateField(auto_now=True, auto_now_add=False)
-    id_cot=models.IntegerField(primary_key=True)
 
 class servicio(models.Model):
-    id_servicio=models.IntegerField(primary_key=True)
     descripcion=models.CharField(max_length=255)
-    serv_name=models.CharField(max_length=30)
+    nombre=models.CharField(max_length=30)
     image_ruta=models.ImageField(upload_to='servicio')
 
 
