@@ -14,7 +14,8 @@
                 <img src="{% static 'photos/logo_vehice_1.jpg' %}" alt='logo'>
             </p>
         </div>
-        <form method="post" class="need validation">
+        <form method="POST" action="submit/" class="need validation">
+            {% csrf_token %}
             <div><p>''</p></div>
             <div class="row"></div>
                 <div class="new_ppl d-flex container">
