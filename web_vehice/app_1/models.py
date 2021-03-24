@@ -24,7 +24,7 @@ class Empresa(models.Model):
         ('XI','Región de Aysén del General Carlos Ibáñez del Campo'),
         ('XII','Región de Magallanes y la Antártica Chilena'),
     ]
-    choice=models.CharField(max_length=4,choices=region_choices,default="")
+    region=models.CharField(max_length=4,choices=region_choices,default="")
 
 class Representante(models.Model):
     nombre=models.CharField(max_length=30)
@@ -48,7 +48,12 @@ class Servicio(models.Model):
     descripcion=models.CharField(max_length=255)
     nombre=models.CharField(max_length=30)
     image_ruta=models.ImageField(upload_to='servicio')
-    id_cot=models.ManyToManyField(Cotizacion)
+    id_cot=models.ManyToManyField(Cotizacion, through='Serv_cot')
+    precio= models.FloatField(max_length=30,default=0)
 
+class Serv_cot(models.Model):
+    id_ser=models.ForeignKey(Servicio,on_delete=models.CASCADE)
+    id_cot=models.ForeignKey(Cotizacion,on_delete=models.CASCADE)
+    nuevo_precio=models.FloatField(max_length=30,default=0)
 
 

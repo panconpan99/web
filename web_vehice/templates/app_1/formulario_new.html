@@ -14,7 +14,7 @@
                 <img src="{% static 'photos/logo_vehice_1.jpg' %}" alt='logo'>
             </p>
         </div>
-        <form method="get" class="need validation">
+        <form method="post" class="need validation">
             <div><p>''</p></div>
             <div class="row"></div>
                 <div class="new_ppl d-flex container">
@@ -25,17 +25,17 @@
                                 <div class="col">
                                     <div class="form-floating mb-1">
                                         <!--nombres-->
-                                        <input type="text" class="form-control has error" id="name_ppl_new" placeholder="nombre" required>
-                                        <label for="name_ppl_new">Nombre</label>
-                                        <div class="invalid-feedback">
-                                            Ponga un nombre
-                                          </div>
+                                        {{form.nombre}}
+                                        <!--<input type="text" class="form-control has error" id="name_ppl_new" placeholder="nombre" required>-->
+                                        <label for="{{form1.nombre.id_for_label}}">Nombre</label>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-floating mb-1">
-                                        <input type="text" class="form-control" id="lastname_ppl_new" placeholder="apellido" >
-                                        <label for="lastname_ppl_new">Apellido</label>
+                                        <!--apellido-->
+                                        {{form.apellido}}
+                                        <!--<input type="text" class="form-control" id="lastname_ppl_new" placeholder="apellido" >-->
+                                        <label for="{{form1.apellido.id_for_label}}">Apellido</label>
                                     </div>
                                 </div>
                               </div>
@@ -50,8 +50,8 @@
                         <p>
                             <div class="form-floating mb-3">
                                 <!--rut-->
-                                <input type="text" name="rut_ppl" id="tur_ppl_new" class="form-control" placeholder="Rut"">
-                                <label for="rut_ppl_new">Rut Empresa</label>
+                                <input type="text" name="rut_enp" id="rut_enp_new" class="form-control" placeholder="Rut"">
+                                <label for="rut_enp_new">Rut Empresa</label>
                             </div>
                         </p>
                         <p>
@@ -64,8 +64,8 @@
                         <p>
                             <div class="form-floating mb-3">
                                 <!--centro-->
-                                <input type="text" name="place_ppl" id="place_ppl_new" class="form-control" placeholder="centros">
-                                <label for="place_ppl_new">ciudad Centro</label>
+                                <input type="text" name="place_dir" id="place_dir_new" class="form-control" placeholder="centros">
+                                <label for="place_dir_new">ciudad Centro</label>
                             </div>
                         </p>
                         <p>
