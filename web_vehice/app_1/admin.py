@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import representante,cotizacion,servicio
+from .models import Representante,Cotizacion,Servicio,Empresa
 
 # Register your models here.
 
-admin.site.register(representante)
-admin.site.register(cotizacion)
-admin.site.register(servicio)
+admin.site.register(Representante)
+admin.site.register(Cotizacion)
+admin.site.register(Servicio)
+admin.site.register(Empresa)

@@ -3,35 +3,52 @@ from django.utils import timezone
 import datetime
 
 # Create your models here.
+class Empresa(models.Model):
+    nombre=models.CharField(max_length=30)
+    rut=models.CharField(max_length=10)
+    region_choices=[
+        ('XV','Región de Arica y Parinacota'),
+        ('I','Región de Tarapacá'),
+        ('II','Región de Antofagasta'),
+        ('III','Región de Atacama'),
+        ('IV','Región de Coquimbo'),
+        ('V','Región de Valparaíso'),
+        ('RM','Región Metropolitana de Santiago'),
+        ('VI','Región del Libertador General Bernardo OHiggins'),
+        ('VII','Región del Maule'),
+        ('XVI','Región del Ñuble'),
+        ('VIII','Región del Biobío'),
+        ('IX','Región de La Araucania'),
+        ('XIV','Región de Los Ríos'),
+        ('X','Región de Los Lagos'),
+        ('XI','Región de Aysén del General Carlos Ibáñez del Campo'),
+        ('XII','Región de Magallanes y la Antártica Chilena'),
+    ]
+    choice=models.CharField(max_length=4,choices=region_choices,default="")
 
-class representante(models.Model):
-    repr_name=models.CharField(max_length=30,unique=True)
-    repr_apellido=models.CharField(max_length=30,unique=True)
-    repr_correo=models.EmailField(max_length=50,unique=True)
+class Representante(models.Model):
+    nombre=models.CharField(max_length=30)
+    apellido=models.CharField(max_length=30)
+    correo=models.EmailField(unique=True)
     telefono=models.CharField(max_length=20)
-    repr_centro=models.CharField(max_length=40)
-    repr_dir_centro=models.CharField(max_length=50)
-    id_repr=models.IntegerField(primary_key=True)
+    centro=models.CharField(max_length=40)
+    ciudad_centro=models.CharField(max_length=50)
+    id_emp=models.ForeignKey(Empresa,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.repr_name
+        return self.nombre
 
-class cotizacion(models.Model):
+class Cotizacion(models.Model):
     cantidad=models.IntegerField()
     fecha=models.DateField(auto_now=True, auto_now_add=False)
-    id_cot=models.IntegerField(primary_key=True)
+    id_repr=models.ForeignKey(Representante,on_delete=models.CASCADE)
 
-class servicio(models.Model):
-    id_servicio=models.IntegerField(primary_key=True)
+
+class Servicio(models.Model):
     descripcion=models.CharField(max_length=255)
-    serv_name=models.CharField(max_length=30)
+    nombre=models.CharField(max_length=30)
     image_ruta=models.ImageField(upload_to='servicio')
+    id_cot=models.ManyToManyField(Cotizacion)
 
 
-class repr_cot(models.Model):
-    repr_id=models.ForeignKey(representante,on_delete=models.CASCADE)
-    cot_id=models.ForeignKey(cotizacion,on_delete=models.CASCADE)
 
-class serv_cot(models.Model):
-    id_cot=models.ForeignKey(cotizacion,on_delete=models.CASCADE)
-    id_servicio=models.ForeignKey(servicio, on_delete=models.CASCADE)
