@@ -1,0 +1,32 @@
+{% extends 'app_1/formulario_template.html' %}
+
+{% block content %}
+<form action="{%url 'submit' %}" method="POST">
+    {% csrf_token %}
+    <div><p>''</p></div>
+    <div class="row">
+
+        <div class="new_ppl d-flex container"">
+            <fieldset>
+                <legend><strong>Datos Basicos Del Reperesentante: </strong></legend>
+                <div class="row g-3">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            {{form1.as_p}}
+                            {{form2.as_p}}
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    <label for="ref_ppl_new">Oprima aca si desea agregar las cantidades: </label>
+                    <input type="checkbox" name="ref_ppl" id="ref_ppl_new" class="form-check",onchange="change_path">
+                </p>
+                <p>
+                    <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
+                </p>
+            </fieldset>
+        </div>
+
+    </div>
+</form >
+{% endblock %}
