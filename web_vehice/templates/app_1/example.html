@@ -1,21 +1,11 @@
 {% extends 'app_1/formulario_template.html' %}
 {% load static %}
 {%block content%}
-
-<input type="checkbox" name="test" id="test">
-<input type="submit" class="btn btn-primary btn-lg" value="enter">
-<script>
-    var checkBox = document.getElementById("test").addEventListener("click",direct());
-    function direct(){
-        
-        if (checkBox.checked == True){
-            let result = confirm();
-            if (result){
-                location.redirect("{% static 'app_1/index_1' %}")
-            }else{
-                location.redirect("{% static 'app_1/index_2' %}")
-            }
-        }
-    }
-</script>
+<form action="{%url 'example' %}" method="POST">
+    {% csrf_token %}
+    <div class="new_ppl d-flex container">
+        <input type="checkbox" name="test" id="test" class="form-check " value='True'>
+        <input type="submit" id="button"  class="btn btn-primary btn-lg submit button" value="enter">
+    </div>
+</form>
 {%endblock%}

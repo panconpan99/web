@@ -16,7 +16,7 @@ class emp_Form(ModelForm):
 class repr_Form(forms.ModelForm):
     
     class Meta:
-        fields = ('nombre','apellido','correo','telefono','centro','ciudad_centro',)
+        fields = ('nombre','apellido','correo','telefono','centro','ciudad_centro','id',)
         model = Representante
     
     def __init__(self, *args, **kwargs):
