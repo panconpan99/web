@@ -34,11 +34,3 @@ def index_2(request):
 
 def result(request):
     return render(request, 'app_1/formulario_results.html')
-
-def example(request):
-    
-    if request.method == 'POST':
-        checkbox = request.POST.__contains__('test')
-        return render(request,'app_1/index.html',{'checkbox':checkbox})
-
-    return render(request,'app_1/example.html')

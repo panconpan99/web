@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from app_1 import views
 urlpatterns = [
-    path('example/',views.example,name='example'),
     path('admin/', admin.site.urls),
     path('',views.submit,name="submit"),
     path('index_1/', views.index_1,name="index_1"),
