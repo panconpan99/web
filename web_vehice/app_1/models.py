@@ -35,14 +35,14 @@ class Representante(models.Model):
     telefono=models.CharField(max_length=20)
     centro=models.CharField(max_length=40)
     ciudad_centro=models.CharField(max_length=50)
-    id_emp=models.ForeignKey(Empresa,on_delete=models.CASCADE)
+    empresa=models.ForeignKey(Empresa,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre +" "+ self.apellido+ "/" +self.centro
 
 class Cotizacion(models.Model):
     fecha=models.DateField(auto_now=True, auto_now_add=False)
-    id_repr=models.ForeignKey(Representante,on_delete=models.CASCADE)
+    representante=models.ForeignKey(Representante,on_delete=models.CASCADE)
     
     def __str__(self):
         return str(self.id)+" "+str(self.fecha)
@@ -53,15 +53,15 @@ class Servicio(models.Model):
     descripcion=models.CharField(max_length=255)
     nombre=models.CharField(max_length=30,)
     image_ruta=models.ImageField(upload_to='servicio')
-    id_cot=models.ManyToManyField(Cotizacion, through='Serv_cot')
+    cotizaciones=models.ManyToManyField(Cotizacion, through=ServCot)
     precio= models.FloatField(max_length=30,default=0)
 
     def __str__(self):
         return self.nombre
 
-class Serv_cot(models.Model):
-    id_ser=models.ForeignKey(Servicio,on_delete=models.CASCADE)
-    id_cot=models.ForeignKey(Cotizacion,on_delete=models.CASCADE)
+class ServCot(models.Model):
+    servicio=models.ForeignKey(Servicio,on_delete=models.CASCADE)
+    cotizacion=models.ForeignKey(Cotizacion,on_delete=models.CASCADE)
     nuevo_precio=models.FloatField(max_length=30)
     cantidad=models.IntegerField(default=1)
 
