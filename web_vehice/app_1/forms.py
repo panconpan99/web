@@ -16,13 +16,12 @@ class emp_Form(ModelForm):
 class repr_Form(forms.ModelForm):
     
     class Meta:
-        fields = ('nombre','apellido','correo','telefono','centro','ciudad_centro','id',)
+        fields = ('nombre','apellido','correo','telefono','centro','ciudad_centro',)
         model = Representante
     
     def __init__(self, *args, **kwargs):
         super(repr_Form,self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
-            visible.field.widget.attrs['required'] ='True'
 
 

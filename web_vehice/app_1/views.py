@@ -30,7 +30,7 @@ def submit(request):
     else:
         form1=repr_Form()
         form2=emp_Form()
-    return render(request,'app_1/formulario_test.html',{'form1':form1,'form2':form2})
+    return render(request,'app_1/formulario_test.html',{'form1':form1,'form2':form2,)
 
 def result(request):
     return render(request, 'app_1/formulario_results.html')
