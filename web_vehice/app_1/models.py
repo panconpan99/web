@@ -41,7 +41,6 @@ class Representante(models.Model):
         return self.nombre +" "+ self.apellido+ "/" +self.centro
 
 class Cotizacion(models.Model):
-    cantidad=models.IntegerField()
     fecha=models.DateField(auto_now=True, auto_now_add=False)
     id_repr=models.ForeignKey(Representante,on_delete=models.CASCADE)
     
@@ -63,7 +62,8 @@ class Servicio(models.Model):
 class Serv_cot(models.Model):
     id_ser=models.ForeignKey(Servicio,on_delete=models.CASCADE)
     id_cot=models.ForeignKey(Cotizacion,on_delete=models.CASCADE)
-    nuevo_precio=models.FloatField(max_length=30,default=0)
+    nuevo_precio=models.FloatField(max_length=30)
+    cantidad=models.IntegerField(default=1)
 
     def __str__(self):
         return self.id

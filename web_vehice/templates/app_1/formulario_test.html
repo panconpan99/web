@@ -13,12 +13,17 @@
                     <div class="col">
                         <div class="form-floating mb-3">
                             {{form1.as_p}}
+                            <legend><strong>Datos Basicos De la Empresa: </strong></legend>
+                            {%if form1.is_valid and form2.is_valid %}
+
+                            {%endif%}
                             {{form2.as_p}}
                         </div>
                     </div>
                 </div>
                 <p>
-                    <label for="ref_ppl_new">Oprima aca si desea agregar las cantidades: </label><input type="checkbox" name="ref_ppl" id="ref_ppl_new" class="form-check">
+                    <label for="ref_ppl_new">Oprima aca si desea agregar las cantidades: </label>
+                    <input type="checkbox" name="ref_ppl" id="ref_ppl_new" class="form-check">
                 </p>
                 <p>
                     <button type="submit" class="btn btn-primary btn-lg">Entrar</button>

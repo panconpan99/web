@@ -52,6 +52,10 @@
             </div>
         </div>
     </div>
-    <script src="{% static 'js/test_1.js' %} "></script>
+    {%if checkbox %}
+        <script src="{% static 'js/test_1.js' %} "></script>
+    {%else%}
+        <script src="{% static 'js/test_2.js' %} "></script>
+    {%endif%}
 </div>
 {%endblock%}

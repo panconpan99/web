@@ -19,7 +19,5 @@ from app_1 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.submit,name="submit"),
-    path('index_1/', views.index_1,name="index_1"),
-    path('index_2/', views.index_2, name="index_2"),
     path('result/', views.result, name="result"),
 ]
