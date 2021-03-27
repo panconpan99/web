@@ -4,7 +4,7 @@ import datetime
 
 # Create your models here.
 class Empresa(models.Model):
-    nombre=models.CharField(max_length=30)
+    Nombre=models.CharField(max_length=30)
     rut=models.CharField(max_length=10)
     region_choices=[
         ('XV','Región de Arica y Parinacota'),
@@ -26,7 +26,7 @@ class Empresa(models.Model):
     ]
     region=models.CharField(max_length=4,choices=region_choices,default="")
     def __str__(self):
-        return self.nombre
+        return self.Nombre
 
 class Representante(models.Model):
     nombre=models.CharField(max_length=30)
