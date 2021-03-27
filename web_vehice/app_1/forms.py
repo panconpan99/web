@@ -4,7 +4,7 @@ from django.forms import ModelForm
 
 class emp_Form(ModelForm):
     class Meta:
-        fields=('nombre','rut','region',)
+        fields='__all__'
         model=Empresa
     
     def __init__(self, *args, **kwargs):
@@ -12,6 +12,8 @@ class emp_Form(ModelForm):
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
             visible.field.widget.attrs['required'] ='True'
+
+    
 
 class repr_Form(forms.ModelForm):
     
@@ -23,5 +25,6 @@ class repr_Form(forms.ModelForm):
         super(repr_Form,self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
+   
 
 

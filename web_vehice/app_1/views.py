@@ -12,17 +12,12 @@ def submit(request):
         form2 = emp_Form(request.POST)
         checkbox = request.POST.__contains__('ref_ppl')
         if form1.is_valid() and form2.is_valid():
-            #find,created= Empresa.objects.get_or_create(nombre=form2.fields('nombre'))
+            post_emp = form2.save(commit=False)
             post_repr = form1.save(commit=False)
-            post_emp = form2.save()
-            #print(find)
-            if post_repr.id_emp_id is None:
-                post_repr.id_emp_id=post_emp.id
+            finder,created=Empresa.objects.get_or_create(Nombre=post_emp.Nombre)
+            post_repr.id_emp_id=finder.id
+            finder.save()
             post_repr.save()
-            post_emp.save()
-            for post_emp in Empresa.objects.all():
-                print(post_emp)
-           
             context={
                 'checkbox':checkbox,
             }
@@ -30,7 +25,7 @@ def submit(request):
     else:
         form1=repr_Form()
         form2=emp_Form()
-    return render(request,'app_1/formulario_test.html',{'form1':form1,'form2':form2,)
+    return render(request,'app_1/formulario_test.html',{'form1':form1,'form2':form2})
 
 def result(request):
     return render(request, 'app_1/formulario_results.html')
