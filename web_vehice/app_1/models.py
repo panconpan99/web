@@ -53,7 +53,7 @@ class Servicio(models.Model):
     descripcion=models.CharField(max_length=255)
     nombre=models.CharField(max_length=30,)
     image_ruta=models.ImageField(upload_to='servicio')
-    cotizaciones=models.ManyToManyField(Cotizacion, through=ServCot)
+    cotizaciones=models.ManyToManyField(Cotizacion,through='ServCot')
     precio= models.FloatField(max_length=30,default=0)
 
     def __str__(self):

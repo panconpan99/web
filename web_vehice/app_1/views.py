@@ -15,7 +15,7 @@ def submit(request):
             post_emp = form2.save(commit=False)
             post_repr = form1.save(commit=False)
             finder,created=Empresa.objects.get_or_create(Nombre=post_emp.Nombre)
-            post_repr.id_emp_id=finder.id
+            post_repr.empresa_id=finder.id
             finder.save()
             post_repr.save()
             context={

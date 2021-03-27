@@ -1,5 +1,5 @@
 from django import forms
-from .models import Representante,Empresa,Servicio,Serv_cot 
+from .models import Representante,Empresa,Servicio,ServCot 
 from django.forms import ModelForm
 
 class emp_Form(ModelForm):
@@ -9,6 +9,7 @@ class emp_Form(ModelForm):
     
     def __init__(self, *args, **kwargs):
         super(emp_Form,self).__init__(*args, **kwargs)
+        self.fields['rut'].widget.attrs['placeholder']='12345678-9'
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
             visible.field.widget.attrs['required'] ='True'
@@ -23,6 +24,7 @@ class repr_Form(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super(repr_Form,self).__init__(*args, **kwargs)
+        self.fields['correo'].widget.attrs['placeholder']='email@address.cl'
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
    
