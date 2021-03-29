@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 import datetime
+from django.db.models import Max
 
 # Create your models here.
 class Empresa(models.Model):
@@ -24,7 +25,7 @@ class Empresa(models.Model):
         ('XI','Región de Aysén del General Carlos Ibáñez del Campo'),
         ('XII','Región de Magallanes y la Antártica Chilena'),
     ]
-    region=models.CharField(max_length=4,choices=region_choices,default="")
+    region=models.CharField(max_length=4,choices=region_choices)
     def __str__(self):
         return self.Nombre
 
@@ -55,7 +56,8 @@ class Cotizacion(models.Model):
     servicio=models.ManyToManyField(Servicio,through='ServCot')
     
     def __str__(self):
-        return str(self.id)+" "+str(self.fecha)
+        return str(self.id)+" "+str(self.representante.nombre)
+    
 
 
 class ServCot(models.Model):
@@ -65,6 +67,6 @@ class ServCot(models.Model):
     cantidad=models.IntegerField(default=1)
 
     def __str__(self):
-        return self.id
+        return str(self.cotizacion.id)+"-"+str(self.servicio.nombre)
     
 

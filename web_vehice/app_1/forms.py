@@ -28,11 +28,15 @@ class repr_Form(forms.ModelForm):
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
    
-class cot_Form(forms.ModelForm):
+class Cot_Form(forms.ModelForm):
     class Meta:
         fields= ('representante',)
         model=Cotizacion
 
+    def __init__(self, *args, **kwargs):
+        super(Cot_Form,self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
 #class cotserv_Form(form.ModelForm):
 
 
