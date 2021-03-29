@@ -4,6 +4,6 @@ from app_1 import views
 
 urlpatterns = [
     path('',views.home,name='formulario_test'),
-    path('submit/',views.index, name ='submit'),
+    path('',views.index, name ='submit'),
     path('',views.result, name='result'),
 ]

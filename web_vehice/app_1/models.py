@@ -40,24 +40,23 @@ class Representante(models.Model):
     def __str__(self):
         return self.nombre +" "+ self.apellido+ "/" +self.centro
 
-class Cotizacion(models.Model):
-    fecha=models.DateField(auto_now=True, auto_now_add=False)
-    representante=models.ForeignKey(Representante,on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return str(self.id)+" "+str(self.fecha)
-
-
-
 class Servicio(models.Model):
+    nombre=models.CharField(max_length=30)
     descripcion=models.CharField(max_length=255)
-    nombre=models.CharField(max_length=30,)
-    image_ruta=models.ImageField(upload_to='servicio')
-    cotizaciones=models.ManyToManyField(Cotizacion,through='ServCot')
+    image_ruta=models.ImageField(upload_to='static/photos')
     precio= models.FloatField(max_length=30,default=0)
 
     def __str__(self):
         return self.nombre
+
+class Cotizacion(models.Model):
+    fecha=models.DateField(auto_now=True, auto_now_add=False)
+    representante=models.ForeignKey(Representante,on_delete=models.CASCADE)
+    servicio=models.ManyToManyField(Servicio,through='ServCot')
+    
+    def __str__(self):
+        return str(self.id)+" "+str(self.fecha)
+
 
 class ServCot(models.Model):
     servicio=models.ForeignKey(Servicio,on_delete=models.CASCADE)

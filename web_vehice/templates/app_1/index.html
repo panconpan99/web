@@ -7,6 +7,15 @@
             <h4 class="card-header">Servicios </h4>
         </div>
         <div class="card-body">
+            <form action="{%url 'serv_submit' %}" method="post">
+                {{form}}
+                    <div class="form-check" style="padding: 1em;">
+                        <p>
+                            <label class="form-check-label" for="ref_ppl">Oprima aca si desea agregar las cantidades: </label>
+                            <input type="checkbox" name="ref_ppl" id="ref_ppl_new" class="form-check-input">
+                        </p>
+                    </div>
+                </form>
             <h5 class="card-text">Agregue el servicio</h5>
             <div class="container">
                 <table id = "service-to-add"class="table table-bordered">
@@ -14,9 +23,7 @@
                         <tr>
                             <th = scope="col">Service</th>
                             <th = scope="col">Description</th>
-                            {%if checkbox %}
-                                <th = scope="col">Cantidad</th>
-                            {%endif%}
+                            <th = scope="col">Cantidad</th>
                             <th = scope="col">UF</th>
                             <th = scope="col">imagen</th>
                         </tr>
@@ -26,24 +33,15 @@
                 </table>  
                 <div id="service-cont" class="container my-2">
                     <select id="service" data-live-search="true" class="form-select " aria-label="Default Select Example" style="width: 500px" placeholder="agregue">
-                        <option id="0" value="service0" selected>Service 0</option>
-                        <optgroup label="Score">
-                            <option id="1" value="General Score">General Score</option>
-                            <option id="2" value="Score Gill">Score Gill</option>
-                        </optgroup>
-                        <optgroup label="Special Histopatology">
-                            <option id="3" value="Detección de FANs">Detección de FANs</option>
-                        </optgroup>
-                        <optgroup label="H&E Analysis">
-                            <option id="4" value="H&E organo">H&E Órgano</option>
-                            <option id="5" value="H&E Alevin">H&E Alevin</option>
-                        </optgroup>
+                        {% for s in  serv %}
+                            <option id="ser({{s.id}})" value="{{s}}">{{s.nombre}}</option>
+                        {%endfor%}
                     </select>
                 </div>
                 <div class="container">
                     <div class="row">
                         <div class="col align-self-start">
-                            <button id="add-service" type="button" class="btn btn-primary">Add service</button>
+                            <button id="add-service" type="button" class="btn btn-primary">Agregar Servicios</button>
                         </div>
                     </div>
                 </div>
@@ -52,10 +50,17 @@
             </div>
         </div>
     </div>
-    {%if checkbox %}
-        <script src="{% static 'js/test_1.js' %} "></script>
-    {%else%}
-        <script src="{% static 'js/test_2.js' %} "></script>
-    {%endif%}
+    
+    <div class= "container-fluid" style="padding: 1rem;">
+        <div class="row " style="margin-left: auto" > 
+            <div class="col d-md-flex justify-content-md-start">
+                <a href="{% url 'home' %}" class="btn btn-primary me-md-2">Atras!</a>
+              </div>
+            <div class="col d-md-flex justify-content-md-end">
+                <button id="next" class="btn btn-primary me-md-2" type="button">Enviar!</button>
+              </div>
+        </div>
+    </div>
+    <script src="{% static 'js/test_1.js' %} "></script>
 </div>
 {%endblock%}

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Representante,Empresa,Servicio,ServCot 
+from .models import Representante,Empresa,Servicio,ServCot,Cotizacion
 from django.forms import ModelForm
 
 class emp_Form(ModelForm):
@@ -28,5 +28,13 @@ class repr_Form(forms.ModelForm):
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
    
+class cot_Form(forms.ModelForm):
+    class Meta:
+        fields= ('representante',)
+        model=Cotizacion
+
+#class cotserv_Form(form.ModelForm):
 
 
+
+        

@@ -1,0 +1,9 @@
+{% extends 'app_1/formulario_template.html' %}
+{% load static %}
+{% block content %}
+<div>
+    {% for s in serv %}
+        <h3>{{s.nombre}}</h3>
+    {% endfor %}  
+</div>
+{%endblock%}

@@ -18,6 +18,9 @@ from django.urls import path, include
 from app_1 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.submit,name="submit"),
+    path('',views.home,name="home"),
+    path('form/',views.submit,name="submit"),
+    path('index/',views.serv_submit,name="serv_submit"),
     path('result/', views.result, name="result"),
+    path('test/',views.test,name="test")
 ]
