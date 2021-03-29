@@ -36,7 +36,7 @@
                     </tbody>
                 </table>  
                 <div id="service-cont" class="container my-2">
-                    <select id="service" data-live-search="true" class="form-select " aria-label="Default Select Example" style="width: 500px" placeholder="agregue">
+                    <select id="service" name="selectService" data-live-search="true" class="form-select " aria-label="Default Select Example" style="width: 500px" placeholder="agregue">
                         {% for s in  serv %}
                             <option id="ser({{s.id}})" value="{{s}}">{{s.nombre}}</option>
                         {%endfor%}
