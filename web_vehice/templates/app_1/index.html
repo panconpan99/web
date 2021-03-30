@@ -1,24 +1,22 @@
 {% extends 'app_1/formulario_template.html' %}
 {% load staticfiles %}
+
 {% block content %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!--<script src="{% static 'js/service.js' %} "></script>-->
+
 <div class="container" style="padding: 1rem;">
     <div class="card bordered" style="width: 1250px;">
         <div class="card-header">
             <h4 class="card-header">Servicios </h4>
         </div>
         <div class="card-body">
-            <form action="{%url 'serv_submit' %}" method="post">
+            <form action="{%url 'serv_submit' %}" method="post" style ="padding:1em">
                 {{form}}
-                    <div class="form-check" style="padding: 1em;">
-                        <p>
-                            <label class="form-check-label" for="ref_ppl">Oprima aca si desea agregar las cantidades: </label>
-                            <input type="checkbox" name="ref_ppl" id="ref_ppl_new" class="form-check-input">
-                        </p>
-                    </div>
-                </form>
+            </form>
             <h5 class="card-text">Agregue el servicio</h5>
             <div class="container">
-                <table id = "service-to-add"class="table table-bordered">
+                <table id = "service-to-add" class="table table-bordered">
                     <thead>
                         <tr>
                             <th = scope="col">Service</th>
@@ -30,18 +28,20 @@
                         </tr>
                     </thead>
                     <tbody id="variable" class="services-row">
-                        {%for serv in cot %}
-                            <th><button data-sid="{{serv.id}}" class="btn btn-danger">eliminar</button></th>
+                        {%for s in serv %}
                         {%endfor%}
+                            <!--<th><button data-sid="{{serv.id}}" class="btn btn-danger">eliminar</button></th>-->
                     </tbody>
                 </table>  
+
                 <div id="service-cont" class="container my-2">
                     <select id="service" name="selectService" data-live-search="true" class="form-select " aria-label="Default Select Example" style="width: 500px" placeholder="agregue">
                         {% for s in  serv %}
-                            <option id="ser({{s.id}})" value="{{s}}">{{s.nombre}}</option>
+                            <option value="{{s.id}}"> {{s.nombre}}</option>
                         {%endfor%}
                     </select>
                 </div>
+
                 <div class="container">
                     <div class="row">
                         <div class="col align-self-start">
@@ -63,11 +63,23 @@
               </div>
         </div>
     </div>
-    <script src="{% static 'js/service.js' %} "></script>
-    <!--<script>
-        const servicio = {{serv|safe}};
-        console.log(servicio);
-        
-     </script>-->
+    
 </div>
+
+{%endblock%}
+
+{%block js%}
+
+ <script>
+    $("#add-service").on("click",crear);
+    function crear(){
+        const id = $("#service").val()
+        $.ajax({
+            data: {'serv': id},
+            url: '/index/',
+            type: 'GET',
+        })
+    }
+ </script>
+
 {%endblock%}

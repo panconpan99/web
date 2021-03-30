@@ -4,7 +4,7 @@ const tbodyEl = document.getElementById("variable");
 const services = document.getElementById("service");
 
 buttonAdd.onclick = ()=> {
-    const add = services.value;
+    const add = services.val;
     const row = tbodyEl.insertRow(); 
     const cell = row.insertCell(); 
     cell.innerHTML = add;

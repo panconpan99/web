@@ -1,11 +1,11 @@
 from django.shortcuts import render,redirect
 from django.template import loader
-import json
 from django.core.serializers import serialize
 from django.http import HttpResponseRedirect, HttpRequest
 from app_1 import forms
 from .models import Empresa,Representante,Servicio,ServCot
 from .forms import emp_Form,repr_Form,Cot_Form
+import json
 # Create your views here.
 
 def home(request):
@@ -30,17 +30,24 @@ def submit(request):
     return render(request,'app_1/formulario.html',{'form1':form1,'form2':form2})
 
 def serv_submit(request):
-    checkbox = request.POST.__contains__('ref_ppl')
     servicios = Servicio.objects.values()
     cot=ServCot.objects.all()
     #serialize_serv = serialize('json',servicios)
+
+    def get(self,request,*args,**kwargs):
+       id_serv=request.GET['serv']
+       servicio=Servicio.objects.filter(id=id_serv)
+       print(id_serv)
+        #servicio=Servicio.objects.filter(Servicio__id=id_serv)
     
+
     if request.method == 'POST':
         form = Cot_Form(request.POST)
+        if form.is_valid():
+            form.save()
     else:
         form = Cot_Form()
         context={
-            'checkbox':checkbox,
             'form':form,
             'serv':servicios,
             'servcot':cot,
