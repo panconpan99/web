@@ -1,6 +1,19 @@
-$(document).ready(function()){
-    $(document).on('click','#add-service',function())
-}
+$(document).ready(function(){
+    $("#add-service").on("click",crear);
+    function crear(){
+        const id = $("#service").val();
+        $.ajax({
+            data: {'serv':id},
+            url: '/index/',
+            type: 'GET',
+            data: 'json',
+            success:function(){
+                alert("ingresando valores");
+            }
+        })
+    }
+})
+
 /*.onclick = ()=>{
     
     const add = services.value;

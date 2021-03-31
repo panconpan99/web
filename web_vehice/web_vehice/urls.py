@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name="home"),
     path('form/',views.submit,name="submit"),
-    path('index/',views.serv_submit,name="serv_submit"),
+    path('index/',views.check,name="check"),
     path('result/', views.result, name="result"),
     path('test/',views.test,name="test")
 ]

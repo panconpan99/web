@@ -63,8 +63,8 @@ class Cotizacion(models.Model):
 class ServCot(models.Model):
     servicio=models.ForeignKey(Servicio,on_delete=models.CASCADE)
     cotizacion=models.ForeignKey(Cotizacion,on_delete=models.CASCADE)
-    nuevo_precio=models.FloatField(max_length=30)
     cantidad=models.IntegerField(default=1)
+    nuevo_precio=models.FloatField(max_length=30)
 
     def __str__(self):
         return str(self.cotizacion.id)+"-"+str(self.servicio.nombre)

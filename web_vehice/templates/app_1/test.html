@@ -1,9 +1,45 @@
 {% extends 'app_1/formulario_template.html' %}
 {% load static %}
 {% block content %}
-<div>
-    {% for s in serv %}
-        <h3>{{s.nombre}}</h3>
-    {% endfor %}  
+<div class="container" style="padding: 1em;">
+    <div class="row">
+        <form method="POST" action="{%url 'test' %}" >
+            {% csrf_token %}
+            <h4><strong>Seleccione Representante para la creación de la cotización:</strong></h4>
+                {{servcot.representante}}
+            <button id="submit" type="button" class="btn btn-primary btn-lg " data-toggle="modal" data-target="#insert_servicio" >Crear cotización nueva</button>
+            <div class="form-group">
+                <div class="alert alert-success" id="alert_succsess" style="display: none;"></div>
+                <div class="alert alert-danger" id="alert-danger" style="display: none;"></div>
+            </div>
+        </form>
+    </div>
+    <button id="TEST" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#insert_servicio">Open Modal</button>
+    
+    
+    <div id="insert_servicio" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <h3>hola</h3>
+          </div>
+        </div>
+      </div>
+      
 </div>
+{%endblock%}
+{%block js%}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script>
+    $("#add-service").on("click",add);
+        function add(){
+            var representante = $("#repre").val();
+            alert(servicio);
+        }
+    $("#submit").on("click",test);
+        function test(){
+        $('#insert_servicio').modal('show')
+        }
+</script>
 {%endblock%}

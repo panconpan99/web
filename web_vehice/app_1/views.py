@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect
 from django.template import loader
 from django.core.serializers import serialize
-from django.http import HttpResponseRedirect, HttpRequest
+from django.views.generic.edit import CreateView
+#from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseRedirect, HttpRequest,JsonResponse
 from app_1 import forms
-from .models import Empresa,Representante,Servicio,ServCot
+from .models import Empresa,Representante,Servicio,ServCot,Cotizacion
 from .forms import emp_Form,repr_Form,Cot_Form
 import json
 # Create your views here.
@@ -23,16 +25,18 @@ def submit(request):
             post_repr.empresa_id=finder.id
             finder.save()
             post_repr.save()
-            return redirect('serv_submit')
+            return redirect('check')
     else:
         form1=repr_Form()
         form2=emp_Form()
     return render(request,'app_1/formulario.html',{'form1':form1,'form2':form2})
 
-def serv_submit(request):
-    servicios = Servicio.objects.values()
-    cot=ServCot.objects.all()
-    #serialize_serv = serialize('json',servicios)
+def check(request):
+
+    if request.is_ajax and request.method=='GET':
+        id_serv = request.GET.get['serv']
+        servicio=Servicio.objects.filter(id=id_serv)
+        print(id_serv)
 
     def get(self,request,*args,**kwargs):
        id_serv=request.GET['serv']
@@ -49,8 +53,7 @@ def serv_submit(request):
         form = Cot_Form()
         context={
             'form':form,
-            'serv':servicios,
-            'servcot':cot,
+            'serv':servicio,
            # 'serialize':serialize_serv,
         }
     return render(request, 'app_1/index.html',context)
@@ -58,6 +61,17 @@ def serv_submit(request):
 def result(request):
     return render(request, 'app_1/formulario_results.html')
 
+
+
 def test(request):
-    servicios = Servicio.objects.all()
-    return render(request,'app_1/test.html',{'serv':servicios})
+    if request.method == 'POST':
+        coti=Cot_Form(request.POST)
+        if coti.is_valid():
+            post_cot=coti.save(commit=False)
+            saved=Cotizacion.objects.create(representante=post_cot.representante)
+            saved.save()
+            
+    else:
+        coti=Cot_Form()
+    return render(request,'app_1/test.html',{'servcot':coti})
+
