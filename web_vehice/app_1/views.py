@@ -72,17 +72,21 @@ def test(request):
         try:
             coti=Cotizacion(representante_id=repreid)
             coti.save()
+            #no salen los mensajes
             coti_data={"id":coti.id,"representante_id":coti.representante.id,"error":False,"ErrorMessage":"Cotización Creada"}
             return JsonResponse(coti_data,safe=False)
         except:
             print("error")
             coti_data={"error":True,"errorMessage":"Cotización fallida"}
             return JsonResponse(coti_data,safe=False)
+    #intentar mostrar la tabla de la cotización
     return render(request,'app_1/test.html',{'repre':repre,'serv':serv})
 
 def insertserv(request):
     idserv= request.POST.get("idserv")
 
+
+    
 
     
 
