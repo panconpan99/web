@@ -30,7 +30,7 @@ class repr_Form(forms.ModelForm):
    
 class Cot_Form(forms.ModelForm):
     class Meta:
-        fields= ('representante',)
+        fields= ('representante','servicio')
         model=Cotizacion
 
     def __init__(self, *args, **kwargs):

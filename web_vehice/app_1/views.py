@@ -2,12 +2,13 @@ from django.shortcuts import render,redirect
 from django.template import loader
 from django.core.serializers import serialize
 from django.views.generic.edit import CreateView
-#from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseRedirect, HttpRequest,JsonResponse
 from app_1 import forms
 from .models import Empresa,Representante,Servicio,ServCot,Cotizacion
 from .forms import emp_Form,repr_Form,Cot_Form
 import json
+from twisted.names.dns import NULL
 # Create your views here.
 
 def home(request):
@@ -54,7 +55,6 @@ def check(request):
         context={
             'form':form,
             'serv':servicio,
-           # 'serialize':serialize_serv,
         }
     return render(request, 'app_1/index.html',context)
 
@@ -62,16 +62,27 @@ def result(request):
     return render(request, 'app_1/formulario_results.html')
 
 
-
+@csrf_exempt
 def test(request):
-    if request.method == 'POST':
-        coti=Cot_Form(request.POST)
-        if coti.is_valid():
-            post_cot=coti.save(commit=False)
-            saved=Cotizacion.objects.create(representante=post_cot.representante)
-            saved.save()
-            
-    else:
-        coti=Cot_Form()
-    return render(request,'app_1/test.html',{'servcot':coti})
+    serv= Servicio.objects.all()
+    repre=Representante.objects.all()
+    repreid=request.POST.get("id")
+    if request.method == 'POST' and repreid != None:
+        print(repreid)
+        try:
+            coti=Cotizacion(representante_id=repreid)
+            coti.save()
+            coti_data={"id":coti.id,"representante_id":coti.representante.id,"error":False,"ErrorMessage":"Cotización Creada"}
+            return JsonResponse(coti_data,safe=False)
+        except:
+            print("error")
+            coti_data={"error":True,"errorMessage":"Cotización fallida"}
+            return JsonResponse(coti_data,safe=False)
+    return render(request,'app_1/test.html',{'repre':repre,'serv':serv})
+
+def insertserv(request):
+    idserv= request.POST.get("idserv")
+
+
+    
 

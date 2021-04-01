@@ -4,31 +4,74 @@
 <div class="container" style="padding: 1em;">
     <div class="row">
         <form method="POST" action="{%url 'test' %}" >
-            {% csrf_token %}
             <h4><strong>Seleccione Representante para la creación de la cotización:</strong></h4>
-                {{servcot.representante}}
-            <button id="submit" type="button" class="btn btn-primary btn-lg " data-toggle="modal" data-target="#insert_servicio" >Crear cotización nueva</button>
+                <select id="repre" name="selectRepre" data-live-search="true" class="form-select " aria-label="Default Select Example" style="width: 500px" placeholder="agregue">
+                  <option value="None" selected>//</option>
+                  {% for r in  repre %}
+                      <option  value="{{r.id}}"> {{r.nombre}} {{r.apellido}}</option>
+                  {%endfor%}
+              </select>
+            <button id="btnRepre" type="button" class="btn btn-primary btn-lg btn-insert-data" >Crear cotización nueva</button>
             <div class="form-group">
-                <div class="alert alert-success" id="alert_succsess" style="display: none;"></div>
-                <div class="alert alert-danger" id="alert-danger" style="display: none;"></div>
+                <div class="alert alert-success" id="alert_succsess" style="display: none;">
+
+                </div>
+                <div class="alert alert-danger" id="alert_danger" style="display: none;">
+
+                </div>
             </div>
-        </form>
-    </div>
-    
-    <button id="btnServicio" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#dlgServicio">Open Modal</button>
-    
-    <div class="modal" tabindex="-1" id="dlgServicio">
+          </form>
+      </div>
+        <!--modal-->
+        <div class="container" style="padding: 1em;">
+          <button id="btnServicio" type="button" class="btn btn-primary btn-lg " data-toggle="modal" data-target="#dlgServicio" ></button>
+        </div>
+    <div class="modal fade" id="dlgServicio" aria-labelledby="myLargeModalLabel">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h5 class="modal-title">Agregar Servicios</h5>
+            <button id="clsServicio" type="button" class="btn-close" data-bs-dismiss="modal" data-target="#dlgServicio" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p>Modal body text goes here.</p>
+            <div class="container">
+              <table id = "service-to-add" class="table table-bordered">
+                <tr>
+                  <th = scope="col">Servicio</th>
+                  <th = scope="col">Descripcion</th>
+                  <th = scope="col">Cantidad</th>
+                  <th = scope="col">UF</th>
+                  <th = scope="col">imagen</th>
+                  <th = scope="col">Opción</th>
+              </tr>
+              {% for c in coti_data %}
+              <tr>
+                  <td>{{c.ServCot.Servicio.nombre}}</td>
+                  <td>{{c.ServCot.Servicio.descripcion}}</td>
+                  <td>{{c.ServCot.Cantidad}}</td>
+                  <td>{{c.ServCot.Servicio.precio}}</td>
+                  <td>{{c.ServCot.Servico.imagen_ruta}}</td>
+              </tr>
+              {% endfor%}
+              </table>  
+
+              <div id="service-cont" class="container my-2">
+                  <select id="service" name="selectService" data-live-search="true" class="form-select " aria-label="Default Select Example" style="width: 425x" placeholder="agregue">
+                      {% for s in  serv %}
+                          <option value="{{s.id}}"> {{s.nombre}}</option>
+                      {%endfor%}
+                  </select>
+              </div>
+
+              <div class="container">
+                  <div class="row">
+                      <div class="col align-self-start">
+                          <button id="addService" type="button" class="btn btn-primary">Agregar Servicios</button>
+                      </div>
+                  </div>
+              </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
@@ -38,17 +81,49 @@
 </div>
 {%endblock%}
 {%block js%}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     $(document).ready(function() {
+        var cotizacionid;
         var modal = new bootstrap.Modal(document.getElementById('dlgServicio'));
-        $("#add-service").on("click", () => {
+        $("#btnRepre").on("click", () => {
             var representante = $("#repre").val();
-            alert(servicio);
+            $.ajax({
+              url:'{% url "test" %}',
+              type: 'POST',
+              data:{id:representante}
+            })
+            .done((response)=>{
+              $("#alert_danger").hide();
+              $("#alert_succsess").text(response['ErrorMessage']);
+              $("#alert_succses").show();
+              alert("wenisima");
+            })
+            .fail((response)=>{
+              $("#alert_succsess").hide();
+              $("##alert_danger").text(response['ErrorMessage']);
+              $("##alert_danger").show();
+            })
         });
         $("#btnServicio").on("click", () => {
-            modal.show()
+            modal.show();
         });
+       
+        $("#clsServicio").on("click", () => {
+            modal.hide();
+        });
+        $("#addService").on("click",() => {
+          var Servicio = $("#service").val()
+          console.log(Servicio)
+          $.ajax({
+            url:'{% url "insertserv" %}',
+            type:'POST',
+            data:{idserv:Servicio},
+          })
+        })
     });
 
 </script>

@@ -22,5 +22,6 @@ urlpatterns = [
     path('form/',views.submit,name="submit"),
     path('index/',views.check,name="check"),
     path('result/', views.result, name="result"),
-    path('test/',views.test,name="test")
+    path('test/',views.test,name="test"),
+    path('insertserv/',views.insertserv,name="insertserv"),
 ]
