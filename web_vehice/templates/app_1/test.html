@@ -99,6 +99,7 @@
             })
             .done((response)=>{
               $("#alert_danger").hide();
+              console.log({response}) // Verificar en consola la respuesta que da el servidor
               $("#alert_succsess").text(response['ErrorMessage']);
               $("#alert_succses").show();
               alert("wenisima");
