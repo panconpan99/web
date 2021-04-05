@@ -99,7 +99,7 @@ def insertserv(request):
         if servprecio=="":
             servprecio = servicio.precio 
         #el problema esta aca
-        serv=cot.servicio.add(servicio, through_defaults={'cantidad':  servcount,'nuevo_precio' : servprecio})
+        serv=cot.servicio_set.add(servicio, through_defaults={'cantidad':  servcount,'nuevo_precio' : servprecio})
         serv.save()
         serv_data={"error":False,"ErrorMessage":"Servicio Creado"}
         return JsonResponse(serv_data,safe=False)
