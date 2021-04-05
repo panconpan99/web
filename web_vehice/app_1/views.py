@@ -66,10 +66,8 @@ def result(request):
 def test(request):
     serv= Servicio.objects.all()
     cot=[Cotizacion.objects.latest('id')]
-    print(cot)
     repre=Representante.objects.all()
     repreid=request.POST.get("id")
-    print(cot)
     if request.method == 'POST' and repreid != None:
         print(repreid)
         try:
@@ -90,17 +88,25 @@ def insertserv(request):
     idserv= request.POST.get("idserv")
     servcount= request.POST.get("servcount")
     servprecio = request.POST.get("servprecio")
-    cot=[Cotizacion.objects.latest('id')]
-    if request.method =='POST':
-        try:
-            servicio=Servicio.objects.get(id=idserv)
-            serv=Cotizacion.servicio.add(servicio,through_default={'cantidad':servcount,'nuevo_precio':servprecio})
-            serv.save()
-            serv_data={"id":serv.id,"nombre":serv.servicio.nombre}
-            return JsonResponse(serv_data,safe=False)
-        except:
-            print("fallo")
-            pass 
+    print(idserv)
+    print(servcount)
+    print(servprecio)
+    cot=Cotizacion.objects.latest('id')
+    try:
+        servicio=Servicio.objects.get(id=idserv)
+        print("entro")
+        #si hay precio vacio
+        if servprecio=="":
+            servprecio = servicio.precio 
+        #el problema esta aca
+        serv=cot.servicio.add(servicio, through_defaults={'cantidad':  servcount,'nuevo_precio' : servprecio})
+        serv.save()
+        serv_data={"error":False,"ErrorMessage":"Servicio Creado"}
+        return JsonResponse(serv_data,safe=False)
+    except:
+        print("fallo")
+        serv_data={"error":True,"ErrorMessage":"error"}
+        return JsonResponse(serv_data,safe=False)
 
 
     

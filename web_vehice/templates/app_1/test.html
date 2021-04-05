@@ -25,14 +25,14 @@
       </div>
         <!--modal-->
         <div class="container" style="padding: 1em;">
-          <button id="btnServicio" type="button" class="btn btn-primary btn-lg " data-toggle="modal" data-target="#dlgServicio" ></button>
+          <button id="btnServicio" type="button" class="btn btn-primary btn-lg " data-toggle="modal" data-target="#dlgServicio" >nuevo servicio</button>
         </div>
     <div class="modal fade" id="dlgServicio" aria-labelledby="myLargeModalLabel">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Agregar Servicios</h5>
-            <button id="clsServicio" type="button" class="btn-close" data-bs-dismiss="modal" data-target="#dlgServicio" aria-label="Close" style="padding: 1em;">nuevo servicio </button>
+            <button id="clsServicio" type="button" class="btn-close" data-bs-dismiss="modal" data-target="#dlgServicio" aria-label="Close" style="padding: 1em;"></button>
           </div>
           <div class="modal-body">
             <div class="container">
@@ -63,7 +63,7 @@
                       {%endfor%}
                   </select>
                   <label for="servcount">Cantidad</label>
-                  <input type="number" name="servcount" id="servcount" placeholder="1"><br>
+                  <input type="number" name="servcount" id="servcount" value="1" placeholder="1"><br>
                   <label for="servprecio">valor nuevo:</label>
                   <input type="text" name="servprecio" id="servprecio"placeholder="opcional"
               </div>
@@ -134,7 +134,7 @@
           $.ajax({
             url:'{% url "insertserv" %}',
             type:'POST',
-            data:{idserv:Servicio,count:servcount,precio:servcount},
+            data:{idserv:Servicio,servcount:servcount,servprecio:servprecio},
           })
           .done( ()=>{
             alert("el mensaje llego")
