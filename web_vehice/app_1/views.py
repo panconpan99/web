@@ -68,12 +68,12 @@ def test(request):
     cot=[Cotizacion.objects.latest('id')]
     repre=Representante.objects.all()
     repreid=request.POST.get("id")
-    if request.method == 'POST' and repreid != None:
+    if request.method == 'POST' and repreid != "":
         print(repreid)
         try:
             coti=Cotizacion(representante_id=repreid)
             coti.save()
-            cot=[Cotizacion.objects.latest('id')]
+            cot=[Cotizacion.servicio.latest('id')]
             #no salen los mensajes
             coti_data={"id":coti.id,"representante_id":coti.representante.id,"error":False,"ErrorMessage":"Cotización Creada"}
             return JsonResponse(coti_data,safe=False)
@@ -92,14 +92,17 @@ def insertserv(request):
     cot=Cotizacion.objects.latest('id')
     try:
         servicio=Servicio.objects.get(id=idserv)
-        print(servicio)
         #si hay precio vacio
         if servprecio == "":
             servprecio = servicio.precio 
-        cot.servicio.add(servicio, through_defaults={'cantidad':servcount,'nuevo_precio' :servprecio})
-        serv_data={"error":False,"ErrorMessage":"Servicio Creado"}
+        servcot=cot.servicio.add(servicio, through_defaults={'cantidad' : servcount,'nuevo_precio' : servprecio})
+        print("hola")
+        print(cot.servicio.values)
+        print("chao")
+        serv_data={"name":servcot.servicio.nombre,"descripcion":servcot.servicio.descripcion,"imagen":servcot.servicio.imagen_ruta,"error":False,"ErrorMessage":"Servicio Creado"}
         return JsonResponse(serv_data,safe=False)
     except Exception as e:
+        print(e)
         serv_data={"error":True,"ErrorMessage":"error"}
         return JsonResponse(serv_data,safe=False)
 
