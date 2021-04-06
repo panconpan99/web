@@ -88,23 +88,17 @@ def insertserv(request):
     idserv= request.POST.get("idserv")
     servcount= request.POST.get("servcount")
     servprecio = request.POST.get("servprecio")
-    print(idserv)
-    print(servcount)
-    print(servprecio)
     cot=Cotizacion.objects.latest('id')
     try:
         servicio=Servicio.objects.get(id=idserv)
-        print("entro")
+        print(servicio)
         #si hay precio vacio
-        if servprecio=="":
+        if servprecio == "":
             servprecio = servicio.precio 
-        #el problema esta aca
-        serv=cot.servicio_set.add(servicio, through_defaults={'cantidad':  servcount,'nuevo_precio' : servprecio})
-        serv.save()
+        serv=cot.servicio.add(servicio, through_defaults={'cantidad':servcount,'nuevo_precio' :servprecio})
         serv_data={"error":False,"ErrorMessage":"Servicio Creado"}
         return JsonResponse(serv_data,safe=False)
-    except:
-        print("fallo")
+    except Exception as e:
         serv_data={"error":True,"ErrorMessage":"error"}
         return JsonResponse(serv_data,safe=False)
 
