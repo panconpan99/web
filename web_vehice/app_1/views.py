@@ -42,7 +42,7 @@ def servsubmit(request):
     cot=[Cotizacion.objects.latest('id')]
     repre=Representante.objects.all()
     repreid=request.POST.get("id")
-    if request.method == 'POST' and repreid != "":
+    if request.method == 'POST' and repreid != None:
         print(repreid)
         try:
             coti=Cotizacion(representante_id=repreid)
