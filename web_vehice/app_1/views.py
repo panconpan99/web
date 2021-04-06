@@ -26,44 +26,18 @@ def submit(request):
             post_repr.empresa_id=finder.id
             finder.save()
             post_repr.save()
-            return redirect('check')
+            return redirect('servsubmit')
     else:
         form1=repr_Form()
         form2=emp_Form()
     return render(request,'app_1/formulario.html',{'form1':form1,'form2':form2})
 
-def check(request):
-
-    if request.is_ajax and request.method=='GET':
-        id_serv = request.GET.get['serv']
-        servicio=Servicio.objects.filter(id=id_serv)
-        print(id_serv)
-
-    def get(self,request,*args,**kwargs):
-       id_serv=request.GET['serv']
-       servicio=Servicio.objects.filter(id=id_serv)
-       print(id_serv)
-        #servicio=Servicio.objects.filter(Servicio__id=id_serv)
-    
-
-    if request.method == 'POST':
-        form = Cot_Form(request.POST)
-        if form.is_valid():
-            form.save()
-    else:
-        form = Cot_Form()
-        context={
-            'form':form,
-            'serv':servicio,
-        }
-    return render(request, 'app_1/index.html',context)
-
-def result(request):
-    return render(request, 'app_1/formulario_results.html')
+def finish(request):
+    return render(request,'app_1/formulario_results.html')
 
 
 @csrf_exempt
-def test(request):
+def servsubmit(request):
     serv= Servicio.objects.all()
     cot=[Cotizacion.objects.latest('id')]
     repre=Representante.objects.all()
@@ -81,6 +55,7 @@ def test(request):
             print("error")
             coti_data={"error":True,"errorMessage":"Cotización fallida"}
             return JsonResponse(coti_data,safe=False)
+    
     return render(request,'app_1/test.html',{'repre':repre,'serv':serv,'cot':cot})
 
 
