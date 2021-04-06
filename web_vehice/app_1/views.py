@@ -83,6 +83,7 @@ def test(request):
             return JsonResponse(coti_data,safe=False)
     return render(request,'app_1/test.html',{'repre':repre,'serv':serv,'cot':cot})
 
+
 @csrf_exempt
 def insertserv(request):
     idserv= request.POST.get("idserv")
@@ -95,7 +96,7 @@ def insertserv(request):
         #si hay precio vacio
         if servprecio == "":
             servprecio = servicio.precio 
-        serv=cot.servicio.add(servicio, through_defaults={'cantidad':servcount,'nuevo_precio' :servprecio})
+        cot.servicio.add(servicio, through_defaults={'cantidad':servcount,'nuevo_precio' :servprecio})
         serv_data={"error":False,"ErrorMessage":"Servicio Creado"}
         return JsonResponse(serv_data,safe=False)
     except Exception as e:

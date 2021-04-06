@@ -32,7 +32,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Agregar Servicios</h5>
-            <button id="clsServicio" type="button" class="btn-close" data-bs-dismiss="modal" data-target="#dlgServicio" aria-label="Close" style="padding: 1em;"></button>
+            <button id="clsServicio" type="button" class="btn-close" data-dismiss="modal" data-target="#dlgServicio" aria-label="Close" style="padding: 1em;"></button>
           </div>
           <div class="modal-body">
             <div class="container">
@@ -118,14 +118,6 @@
               }
             })
         });
-        $("#btnServicio").on("click", () => {
-            modal.show();
-        });
-       
-        $("#clsServicio").on("click", () => {
-            modal.hide();
-        });
-        
         $("#addService").on("click",() => {
           var Servicio = $("#service").val()
           var servcount = $("#servcount").val()
