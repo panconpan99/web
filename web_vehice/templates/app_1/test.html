@@ -112,7 +112,6 @@
           var Servicio = $("#service").val()
           var servcount = $("#servcount").val()
           var servprecio = $("#servprecio").val()
-          console.log(Servicio)
           $.ajax({
             url:'{% url "insertserv" %}',
             type:'POST',
