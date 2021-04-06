@@ -42,18 +42,9 @@
                   <th = scope="col">Descripcion</th>
                   <th = scope="col">Cantidad</th>
                   <th = scope="col">UF</th>
-                  <th = scope="col">imagen</th>
                   <th = scope="col">Opción</th>
+                  
               </tr>
-              {% for c in cot %}
-               <tr>
-                  <td>{{c.Servicio.nombre}}</td>
-                  <td>{{c.Servicio.descripcion}}</td>
-                  <td>{{c.Cantidad}}</td>
-                  <td>{{c.precio_nuevo}}</td>
-                  <td>{{c.Servico.imagen_ruta}}</td>
-              </tr>
-              {% endfor%}
               </table>  
 
               <div id="service-cont" class="container my-2">
@@ -82,7 +73,6 @@
         </div>
       </div>
     </div>
-      
 </div>
 {%endblock%}
 {%block js%}
@@ -129,8 +119,7 @@
             data:{idserv:Servicio,servcount:servcount,servprecio:servprecio},
           })
           .done( (response)=>{
-            alert("el mensaje llego")
-            var htmltext = "<tr><td>"+response["name"]+"</td><td>"+response["descripcion"]+"</td><td>"+servcount+"</td><td>"+servprecio+"</td><td>"+response["imagen"]+"</td></tr>"
+            var htmltext = "<tr><td>"+response["nombre"]+"</td><td>"+response["descripcion"]+"</td><td>"+response["cantidad"]+"</td><td>"+response["precio"]+"</td><td class='btn-td-block'><button class='btn btn-block btn-delete btn-danger'>Eliminar</button></td></tr>";
             $("#servicetoadd").append(htmltext);
           })
         })

@@ -44,7 +44,7 @@ class Representante(models.Model):
 class Servicio(models.Model):
     nombre=models.CharField(max_length=30)
     descripcion=models.CharField(max_length=255)
-    image_ruta=models.ImageField(upload_to='static/photos')
+    imagen_ruta=models.ImageField(upload_to='static/photos')
     precio= models.FloatField(max_length=30,default=0)
 
     def __str__(self):

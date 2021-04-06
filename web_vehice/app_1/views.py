@@ -95,11 +95,9 @@ def insertserv(request):
         #si hay precio vacio
         if servprecio == "":
             servprecio = servicio.precio 
-        servcot=cot.servicio.add(servicio, through_defaults={'cantidad' : servcount,'nuevo_precio' : servprecio})
-        print("hola")
-        print(cot.servicio.values)
-        print("chao")
-        serv_data={"name":servcot.servicio.nombre,"descripcion":servcot.servicio.descripcion,"imagen":servcot.servicio.imagen_ruta,"error":False,"ErrorMessage":"Servicio Creado"}
+        cot.servicio.add(servicio, through_defaults={'cantidad' : servcount,'nuevo_precio' : servprecio})
+        Cot=cot.servicio.latest("id")
+        serv_data={"nombre":Cot.nombre,"descripcion":Cot.descripcion,"cantidad":servcount,"precio":servprecio,"error":False,"ErrorMessage":"Servicio Creado"}
         return JsonResponse(serv_data,safe=False)
     except Exception as e:
         print(e)
