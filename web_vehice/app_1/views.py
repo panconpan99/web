@@ -70,7 +70,7 @@ def insertserv(request):
         #si hay precio vacio
         if servprecio == "":
             servprecio = servicio.precio 
-        cot.servicio.add(servicio, through_defaults={'cantidad' : servcount,'nuevo_precio' : servprecio})
+        cot.servicio.add(servicio, through_defaults={'cantidad' :servcount,'nuevo_precio' :servprecio})
         Cot=cot.servicio.latest("id")
         serv_data={"nombre":Cot.nombre,"descripcion":Cot.descripcion,"cantidad":servcount,"precio":servprecio,"error":False,"ErrorMessage":"Servicio Creado"}
         return JsonResponse(serv_data,safe=False)
