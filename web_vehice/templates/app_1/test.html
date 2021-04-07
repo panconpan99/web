@@ -124,10 +124,9 @@
             $(".servicetoadd").append(htmltext);
           })
         });
-        $(".servicetoadd").on("click",".btn-delete",()=>{
-          console.log("eliminando")
-          var this_html=$(this);
-          $(this).closest('tr').remove();
+        $(".servicetoadd").on("click",".btn-delete",function(){
+          console.log("eliminando");
+          $(this).parent().parent().remove();
         });
 
     });
