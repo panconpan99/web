@@ -46,8 +46,6 @@
                   <th = scope="col">Cantidad</th>
                   <th = scope="col">UF</th>
                   <th = scope="col">Opción</th>
-                  
-              </tr>
               </table>  
 
               <div id="service-cont" class="container my-2">
@@ -65,7 +63,7 @@
               <div class="container">
                   <div class="row">
                       <div class="col align-self-start">
-                          <button id="addService" type="button" class="btn btn-primary">Agregar Servicios</button>
+                          <button id="addService" type="button" class="btn btn-primary addservice">Agregar Servicios</button>
                       </div>
                   </div>
               </div>
@@ -112,7 +110,7 @@
               }
             })
         });
-        $("#addService").on("click",() => {
+        $(".addservice").on("click",() => {
           var Servicio = $("#service").val()
           var servcount = $("#servcount").val()
           var servprecio = $("#servprecio").val()
@@ -122,13 +120,13 @@
             data:{idserv:Servicio,servcount:servcount,servprecio:servprecio},
           })
           .done( (response)=>{
-            var htmltext = "<tr><td>"+response["nombre"]+"</td><td>"+response["descripcion"]+"</td><td>"+response["cantidad"]+"</td><td>"+response["precio"]+"</td><td class='btn-td-block'><button class='btn btn-block btn-delete btn-danger'>Eliminar</button></td></tr>";
+            var htmltext = "<tr><td>"+response["nombre"]+"</td><td>"+response["descripcion"]+"</td><td>"+response["cantidad"]+"</td><td>"+response["precio"]+"</td><td><button class='btn btn-block btn-delete btn-danger' >Eliminar</button></td></tr>";
             $("#servicetoadd").append(htmltext);
           })
-          $("#servicetoadd").on("click",".btn-delete",()=>{
-            console.log("eliminando")
-            $(this).parents("tr").remove();
-          })
+        })
+        $("#servicetoadd").on("click",".btn-delete",()=>{
+          console.log("eliminando")
+          $(this).closest('tr').remove();
         })
 
     });
