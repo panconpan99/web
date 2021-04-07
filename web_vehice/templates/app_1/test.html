@@ -39,7 +39,7 @@
           </div>
           <div class="modal-body">
             <div class="container">
-              <table id = "servicetoadd" class="table table-bordered">
+              <table id = "servicetoadd" class="table table-bordered servicetoadd">
                 <tr>
                   <th = scope="col">Servicio</th>
                   <th = scope="col">Descripcion</th>
@@ -120,14 +120,15 @@
             data:{idserv:Servicio,servcount:servcount,servprecio:servprecio},
           })
           .done( (response)=>{
-            var htmltext = "<tr><td>"+response["nombre"]+"</td><td>"+response["descripcion"]+"</td><td>"+response["cantidad"]+"</td><td>"+response["precio"]+"</td><td><button class='btn btn-block btn-delete btn-danger' >Eliminar</button></td></tr>";
-            $("#servicetoadd").append(htmltext);
+            var htmltext = "<tr><td>"+response["nombre"]+"</td><td>"+response["descripcion"]+"</td><td>"+response["cantidad"]+"</td><td>"+response["precio"]+"</td><td><button class='btn btn-block btn-delete btn-danger'>Eliminar</button></td></tr>";
+            $(".servicetoadd").append(htmltext);
           })
-        })
-        $("#servicetoadd").on("click",".btn-delete",()=>{
+        });
+        $(".servicetoadd").on("click",".btn-delete",()=>{
           console.log("eliminando")
+          var this_html=$(this);
           $(this).closest('tr').remove();
-        })
+        });
 
     });
 
