@@ -125,7 +125,12 @@
             var htmltext = "<tr><td>"+response["nombre"]+"</td><td>"+response["descripcion"]+"</td><td>"+response["cantidad"]+"</td><td>"+response["precio"]+"</td><td class='btn-td-block'><button class='btn btn-block btn-delete btn-danger'>Eliminar</button></td></tr>";
             $("#servicetoadd").append(htmltext);
           })
+          $("#servicetoadd").on("click",".btn-delete",()=>{
+            console.log("eliminando")
+            $(this).parents("tr").remove();
+          })
         })
+
     });
 
 </script>
