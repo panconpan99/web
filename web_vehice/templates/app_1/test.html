@@ -2,7 +2,11 @@
 {% load static %}
 {% block content %}
 <div class="container" style="padding: 1em;">
-    <div class="row">
+    <div class="card bordered" style="width: 1250px;">
+      <div class="card header">
+        <h4 class="card-header">Servicios</h4>
+      </div>
+      <div class="card-body">
         <form method="POST" action="{%url 'servsubmit' %}" >
             <h4><strong>Seleccione Representante para la creación de la cotización:</strong></h4>
                 <select id="repre" name="selectRepre" data-live-search="true" class="form-select " aria-label="Default Select Example" style="width: 500px" placeholder="agregue">
@@ -23,11 +27,8 @@
                 </div>
             </div>
           </form>
-      </div>
-      <div class="row">
-        <div class="container" style="padding: 1em;">
-          <button id="btnServicio" type="button" class="btn btn-primary btn-lg " data-toggle="modal" data-target="#dlgServicio" >nuevo servicio</button>
         </div>
+      </div>
     </div>
         <!--modal-->
     <div class="modal fade" id="dlgServicio" aria-labelledby="myLargeModalLabel">
