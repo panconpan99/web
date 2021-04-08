@@ -22,5 +22,6 @@ urlpatterns = [
     path('form/',views.submit,name="submit"),
     path('servsubmit/',views.servsubmit, name="servsubmit"),
     path('insertserv/',views.insertserv, name="insertserv"),
+    path('deletesubmit/',views.deletesubmit,name="deletesubmit"),
     path('done/',views.finish, name="done"),
 ]

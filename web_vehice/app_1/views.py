@@ -76,8 +76,21 @@ def insertserv(request):
         return JsonResponse(serv_data,safe=False)
     except Exception as e:
         print(e)
-        serv_data={"error":True,"ErrorMessage":"error"}
+        serv_data={"error":True,"ErrorMessage":"error al crear"}
         return JsonResponse(serv_data,safe=False)
+@csrf_exempt
+def deletesubmit(request):
+        nameserv=request.POST.get("name")
+        try:
+            cot=Cotizacion.objects.latest('id')
+            serv=Servicio.objects.get(nombre=nameserv)
+            cot.servicio.remove(serv)
+            serv_data={"error":False,"ErrorMessage":"Servicio eliminado"}
+            return JsonResponse(serv_data,safe=False)
+        except Exception as e:
+            print(e)
+            serv_data={"error":True,"ErrorMessage":"error al eliminar"}
+            return JsonResponse(serv_data,safe=False)
 
 
     

@@ -99,7 +99,6 @@
                 $("#alert_danger").hide();
                 $("#alert_succsess").text(response["ErrorMessage"]);
                 $("#alert_succses").show();
-                alert("wenisima");
               }
             })
             .fail((response)=>{
@@ -126,7 +125,28 @@
         });
         $(".servicetoadd").on("click",".btn-delete",function(){
           console.log("eliminando");
-          $(this).parent().parent().remove();
+          var this_html= $(this);
+          var name=this_html.parent().parent().children().first().text();
+          $(this_html).parent().parent().remove();
+          $.ajax({
+            url:'{% url "deletesubmit" %}',
+            type: 'POST',
+            data:{name:name}
+          })
+          .done((response)=>{
+            if(response["error"]==false){
+              $("#alert_danger").hide();
+              $("#alert_succsess").text(response["ErrorMessage"]);
+              $("#alert_succses").show();
+            }
+          })
+          .fail((response)=>{
+            if(response["error"]==true){
+              $("#alert_succsess").hide();
+              $("##alert_danger").text(response["ErrorMessage"]);
+              $("##alert_danger").show();
+            }
+          })
         });
 
     });
