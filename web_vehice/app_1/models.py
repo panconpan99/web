@@ -7,25 +7,18 @@ from django.db.models import Max
 class Empresa(models.Model):
     Nombre=models.CharField(max_length=30)
     rut=models.CharField(max_length=10)
-    region_choices=[
-        ('XV','Región de Arica y Parinacota'),
-        ('I','Región de Tarapacá'),
-        ('II','Región de Antofagasta'),
-        ('III','Región de Atacama'),
-        ('IV','Región de Coquimbo'),
-        ('V','Región de Valparaíso'),
-        ('RM','Región Metropolitana de Santiago'),
-        ('VI','Región del Libertador General Bernardo OHiggins'),
-        ('VII','Región del Maule'),
-        ('XVI','Región del Ñuble'),
-        ('VIII','Región del Biobío'),
-        ('IX','Región de La Araucania'),
-        ('XIV','Región de Los Ríos'),
-        ('X','Región de Los Lagos'),
-        ('XI','Región de Aysén del General Carlos Ibáñez del Campo'),
-        ('XII','Región de Magallanes y la Antártica Chilena'),
+    pais_choices=[
+        ('CH','Chile'),
+        ('AR','Argentina'),
+        ('EU','Estados Unidos'),
+        ('CA','Canada'),
+        ('ES','España'),
+        ('PO','Portugal'),
+        ('AU','Australia'),
+        ('SW','Suecia'),
+        ('NO','Noruega'),
     ]
-    region=models.CharField(max_length=4,choices=region_choices)
+    Pais=models.CharField(max_length=4,choices=pais_choices)
     def __str__(self):
         return self.Nombre
 

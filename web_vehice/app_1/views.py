@@ -22,7 +22,7 @@ def submit(request):
         if form1.is_valid() and form2.is_valid():
             post_emp = form2.save(commit=False)
             post_repr = form1.save(commit=False)
-            finder,created=Empresa.objects.get_or_create(rut=post_emp.rut,Nombre=post_emp.Nombre,region=post_emp.region)
+            finder,created=Empresa.objects.get_or_create(rut=post_emp.rut,Nombre=post_emp.Nombre,Pais=post_emp.Pais)
             post_repr.empresa_id=finder.id
             finder.save()
             post_repr.save()
@@ -39,15 +39,12 @@ def finish(request):
 @csrf_exempt
 def servsubmit(request):
     serv= Servicio.objects.all()
-    cot=[Cotizacion.objects.latest('id')]
     repre=Representante.objects.all()
     repreid=request.POST.get("id")
     if request.method == 'POST' and repreid != None:
-        print(repreid)
         try:
             coti=Cotizacion(representante_id=repreid)
             coti.save()
-            cot=[Cotizacion.servicio.latest('id')]
             #no salen los mensajes
             coti_data={"id":coti.id,"representante_id":coti.representante.id,"error":False,"ErrorMessage":"Cotización Creada"}
             return JsonResponse(coti_data,safe=False)
@@ -56,7 +53,7 @@ def servsubmit(request):
             coti_data={"error":True,"errorMessage":"Cotización fallida"}
             return JsonResponse(coti_data,safe=False)
     
-    return render(request,'app_1/test.html',{'repre':repre,'serv':serv,'cot':cot})
+    return render(request,'app_1/test.html',{'repre':repre,'serv':serv})
 
 
 @csrf_exempt
@@ -78,6 +75,7 @@ def insertserv(request):
         print(e)
         serv_data={"error":True,"ErrorMessage":"error al crear"}
         return JsonResponse(serv_data,safe=False)
+
 @csrf_exempt
 def deletesubmit(request):
         nameserv=request.POST.get("name")
