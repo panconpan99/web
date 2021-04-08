@@ -48,7 +48,8 @@ def servsubmit(request):
             #no salen los mensajes
             coti_data={"id":coti.id,"representante_id":coti.representante.id,"error":False,"ErrorMessage":"Cotización Creada"}
             return JsonResponse(coti_data,safe=False)
-        except:
+        except Exception as e:
+            print(e)
             print("error")
             coti_data={"error":True,"errorMessage":"Cotización fallida"}
             return JsonResponse(coti_data,safe=False)
@@ -78,17 +79,17 @@ def insertserv(request):
 
 @csrf_exempt
 def deletesubmit(request):
-        nameserv=request.POST.get("name")
-        try:
-            cot=Cotizacion.objects.latest('id')
-            serv=Servicio.objects.get(nombre=nameserv)
-            cot.servicio.remove(serv)
-            serv_data={"error":False,"ErrorMessage":"Servicio eliminado"}
-            return JsonResponse(serv_data,safe=False)
-        except Exception as e:
-            print(e)
-            serv_data={"error":True,"ErrorMessage":"error al eliminar"}
-            return JsonResponse(serv_data,safe=False)
+    nameserv=request.POST.get("name")
+    try:
+        cot=Cotizacion.objects.latest('id')
+        serv=Servicio.objects.get(nombre=nameserv)
+        cot.servicio.remove(serv)
+        serv_data={"error":False,"ErrorMessage":"Servicio eliminado"}
+        return JsonResponse(serv_data,safe=False)
+    except Exception as e:
+        print(e)
+        serv_data={"error":True,"ErrorMessage":"error al eliminar"}
+        return JsonResponse(serv_data,safe=False)
 
 
     
