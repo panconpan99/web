@@ -23,7 +23,7 @@ STATIC_DIR= os.path.join(BASE_DIR,'static')
 # SECURITY WARNING: keep the secret key used in production secret!
 env = environ.Env()
 environ.Env.read_env()
-SECRET_KEY = env("secret_key")
+SECRET_KEY = env('secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
