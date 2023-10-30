@@ -5,10 +5,10 @@ reducir el tiempo de manera considerable la creacion de estas propuestas y mante
 niendo la estetica del mismo.
 
 # funciones claves
--Registro de clientes y pacientes
--Registro de tipo de analisis
--Creación de cotizaciones personalizadas.
+- Registro de clientes y pacientes. 
+- Registro del tipo de analisis.
+- Creación de cotizaciones personalizadas.
 
 # Requisitos de instalación
--Django == 2.2
--mysqlclient==1.4.2
+- Django == 2.2
+- Mysqlclient==1.4.2
